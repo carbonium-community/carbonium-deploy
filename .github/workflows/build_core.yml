@@ -8,16 +8,23 @@ on:
 
 jobs:
 
-  build:
+  build-ubuntu:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository: carbonium-community/carbonium
+      
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22'
 
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Build
+        run: go build -o ./dist/ github.com/carbonium-community/carbonium
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: carbonium
+          path: ./dist/carbonium
