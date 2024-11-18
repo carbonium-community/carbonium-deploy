@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build-ubuntu:
+  build_ubuntu:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,7 +49,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: carbonium-windows.exe
+          name: carbonium-windows
           path: ./dist/carbonium.exe
 
   build_macos_arm64:
