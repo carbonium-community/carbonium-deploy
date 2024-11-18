@@ -52,27 +52,27 @@ jobs:
           name: carbonium-windows.exe
           path: ./dist/carbonium.exe
 
-  build_macos_arm64:
-    runs-on: 	macos-latest
+  # build_macos_arm64:
+  #   runs-on: 	macos-latest
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: carbonium-community/carbonium
-          token: ${{ secrets.PAT }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         repository: carbonium-community/carbonium
+  #         token: ${{ secrets.PAT }}
       
-      - name: Set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: '1.22'
+  #     - name: Set up Go
+  #       uses: actions/setup-go@v4
+  #       with:
+  #         go-version: '1.22'
 
-      - name: Build
-        run: go build -o ./dist/ github.com/carbonium-community/carbonium
+  #     - name: Build
+  #       run: go build -o ./dist/ github.com/carbonium-community/carbonium
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: carbonium-macos_arm64
-          path: ./dist/carbonium
+  #     - uses: actions/upload-artifact@v4
+  #       with:
+  #         name: carbonium-macos_arm64
+  #         path: ./dist/carbonium
 
   build_macos_x86_64:
     runs-on: macos-latest-large
