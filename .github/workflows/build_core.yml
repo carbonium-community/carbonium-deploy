@@ -6,6 +6,10 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  packages: write
+  contents: write
+
 jobs:
 
   build_ubuntu:
@@ -29,6 +33,10 @@ jobs:
         with:
           name: carbonium-linux
           path: ./dist/carbonium
+      - name: Create a Release
+        uses: elgohr/Github-Release-Action@v5
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build_windows:
     runs-on: 	windows-latest
